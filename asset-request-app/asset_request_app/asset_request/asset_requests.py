@@ -3,6 +3,7 @@ import requests
 
 from dotenv import find_dotenv, load_dotenv
 
+
 def get_items(url):
     dotenv_path = find_dotenv()
     load_dotenv(dotenv_path)
