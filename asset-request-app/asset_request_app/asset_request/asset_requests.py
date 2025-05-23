@@ -3,7 +3,6 @@ import requests
 
 from dotenv import find_dotenv, load_dotenv
 
-
 def get_items(url):
     dotenv_path = find_dotenv()
     load_dotenv(dotenv_path)
@@ -37,11 +36,13 @@ def main(barcode):
                 if 'asset_description' in items['results'][i]:
                     if items['results'][i]['asset_description'] == 'Laptop':
                         if 'assigned_to_user' in items['results'][i]:
-                            return 'This laptop belongs to: ' + items['results'][i]['assigned_to_user']
+                            return 'This laptop belongs to: ' + items['results'][i]['assigned_to_user'] 
                         else:
                             return 'This laptop has not been assigned to a user yet. Please try again later'
                     else:
                         return 'The Asset ID you provided is not associated with a laptop. Please try a different Asset ID.'
+                else:
+                    return 'The "Asset Description" field on this particular asset is either empty or it does not say "Laptop". Please make sure it says "Laptop" in the "Asset Description" field of this asset in Assetspire and try again.'
         else:
 
             return 'The Asset ID you provided does not exist. Please try a different Asset ID.'
